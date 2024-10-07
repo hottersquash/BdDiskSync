@@ -1,9 +1,8 @@
 #!/bin/bash
 
-today=$(date +'%Y-%m-%d %H:%M:%S')
 
 function notify {
-    webhook_url="https://open.feishu.cn/open-apis/bot/v2/hook/{飞书机器人密钥}"
+    webhook_url="https://open.feishu.cn/open-apis/bot/v2/hook/${1}"
     curl -X POST  $webhook_url \
         -H 'Content-Type: application/json' \
         -d '{
@@ -11,12 +10,12 @@ function notify {
             "content": {
                 "post": {
                     "zh_cn": {
-                        "title": "同步完成-'"$1"'",
+                        "title": "同步完成-'"$2"'",
                         "content": [
                             [
                                 {
                                     "tag": "text",
-                                    "text": "'"${today}"'"
+                                    "text": "'"${3}"'"
                                 }
                             ]
                                     ]
@@ -25,5 +24,5 @@ function notify {
                 }
             }'
 }
-
-notify $1
+# key, title, content
+notify $1 $2 $3
