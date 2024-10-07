@@ -34,4 +34,4 @@ do
     echo "end upload task: ${fromStr}------>${toStr}/${filename}"
 done
 echo "------------end upload, upload tasks num:${#upload_map[@]}----------"
-./app_backup_file/webhoook.sh ${webhook_key} "备份成功" "备份成功"
+$(pwd)/app_backup_sh/webhoook.sh ${webhook_key} "备份成功" "备份成功"
